@@ -17,10 +17,11 @@ RUN apt-get install -y gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libc
 
 RUN adduser node root
 
+WORKDIR /app
+
 RUN chown -R node:node /app
 USER 1000
 
-WORKDIR /app
 
 COPY package.json package-lock.json ./
 
