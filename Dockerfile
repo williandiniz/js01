@@ -29,7 +29,7 @@ RUN chown -R 1001:0 /tmp/
 
 RUN chmod -R 775 /app
 
-USER 1000
+USER 0
 
 EXPOSE 8080
 
