@@ -1,0 +1,16 @@
+{
+  "name": "jsreport-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "jsreport": "jsreport"
+  },
+  "jsreport": {
+    "entryPoint": "server.js"
+  },
+  "dependencies": {
+    "jsreport": "2.11.0",
+    "puppeteer": "13.0.1"
+  }
+}

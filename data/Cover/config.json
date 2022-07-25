@@ -1,0 +1,22 @@
+{
+    "shortid": "HJer4YaGbU",
+    "name": "Cover",
+    "recipe": "chrome-pdf",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true,
+        "format": "a4",
+        "scale": 1
+    },
+    "pdfOperations": [
+        {
+            "type": "merge"
+        }
+    ],
+    "creationDate": "2020-01-21T13:16:14.104Z",
+    "modificationDate": {
+        "$$date": 1595512588827
+    },
+    "_id": "af6knfiFLYx5DQUB",
+    "$entitySet": "templates"
+}

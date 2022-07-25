@@ -1,0 +1,347 @@
+/*-----------------------*/
+/*  • VARIABLES          */
+/*-----------------------*/
+
+
+:root {
+    --primary: #0079B1;
+    --secondary: #F0613D;
+
+    --cover-border: 2px solid #ddd;
+    --text-color: #222;
+}
+
+
+/*-----------------------*/
+/*  • TYPOGRAPHY         */
+/*-----------------------*/
+
+.post__title,
+.post__content h1,
+.post__content h2,
+.post__content h3,
+.post__content h4,
+.post__excerpt,
+.post__author,
+.about__author,
+.index-link,
+.index-content__title,
+.index-content__list-item {
+    font-family: 'Barlow', sans-serif;
+}
+
+.post__content p,
+.post__content ul,
+.post__content ol,
+.post__content blockquote {
+    font-family: 'Zilla Slab', serif;
+}
+
+
+/*-----------------------*/
+/*  • COVER              */
+/*-----------------------*/
+
+.cover {
+    height: 100%;
+    /* background-color: #222; */
+    display: block;
+    font-family: 'Barlow', sans-serif;
+    padding-bottom: 2rem;
+}
+
+ .cover__bg {
+    position: absolute;
+    width: 100%; height: 100%;
+    top: 0; left: 0;
+    z-index: 1;
+    /* opacity: .5; */
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
+
+.cover__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -2rem;
+    text-align: left;
+}
+
+.cover__logo {
+    width: 45rem;
+    padding: 3rem 3rem 1.5rem;
+    border-radius: 1rem 1rem 0 0;
+    border: var(--cover-border);
+    border-bottom: 0;
+}
+
+.cover__logo img {
+    width: 12rem;
+}
+
+.cover__info {
+    width: 45rem;
+    padding: 1.5rem 4rem 3.75rem;
+    border-radius: 0 0 1rem 1rem;
+    border: var(--cover-border);
+    border-top: 0;
+}
+
+.cover__title {
+    color: var(--text-color);
+    font-size: 36pt;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    display: block;
+}
+
+.cover__excerpt {
+    color: var(--text-color);
+    font-size: 14pt;
+    letter-spacing: .02rem;
+    opacity: .7;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.cover__copyright {
+    color: #aaa;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    font-size: 7pt;
+    letter-spacing: .075rem;
+    text-transform: uppercase;
+}
+
+
+/*-----------------------*/
+/*  • DEDICATÓRIA        */
+/*-----------------------*/
+
+.dedicatoria {
+    height: 100%;
+    background-color: #eee;
+    display: block;
+    font-family: 'Barlow', sans-serif;
+    padding-bottom: 2rem;
+}
+
+.dedicatoria__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -2rem;
+}
+
+.dedicatoria__info {
+    width: 35rem;
+}
+
+.dedicatoria__text {
+    color: var(--text-color);
+    font-size: 19pt;
+    letter-spacing: .02rem;
+    margin-bottom: 2rem;
+    opacity: .7;
+    line-height: 1.4;
+}
+
+.dedicatoria__name {
+    color: #444;
+    font-size: 16pt;
+    letter-spacing: .08rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: .9;
+}
+
+span {
+    font-weight: 800;
+}
+
+
+
+/*-----------------------*/
+/*  • INDEX              */
+/*-----------------------*/
+
+.index-content__title {
+    font-size: 80pt;
+    margin-bottom: .2em;
+}
+
+.index-content__list {
+    color: #ccc;
+    /* margin-left: 1rem; */
+}
+
+.index-content__list-item {
+    /* padding-left: 1rem; */
+    font-size: 21pt;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--secondary);
+}
+
+.index-content__list-item a {
+    word-wrap: break-word;
+    color: #222; 
+    text-decoration: none;
+    padding: 1.25em 0 1.25em;
+    display: block;   
+}
+
+
+/*-----------------------*/
+/*  • CONTENT            */
+/*-----------------------*/
+
+.post__title {
+    font-size: 64pt;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    page-break-after : avoid;
+    line-height: 1;
+}
+
+.post__author {
+    font-size: 20pt;
+    line-height: 1.2;
+    margin-bottom: 2em;
+    text-transform: uppercase;
+    page-break-after : avoid 
+}
+
+.post__content h1 {
+    font-size: 45pt;
+}
+
+.post__content h2 {
+    font-size: 40pt;
+}
+
+.post__content h3 {
+    font-size: 35pt;
+}
+
+.post__content p,
+.post__content ol,
+.post__content ul,
+.post__content pre,
+.post__content blockquote,
+.post__content h5,
+.post__content h6 {
+    margin: 0 0 1em;
+}
+.post__content h1,
+.post__content h2,
+.post__content h3,
+.post__content h4 {
+    margin: 1em 0 .75em;
+    page-break-after : avoid;
+}
+.post__content h1:first-child,
+.post__content h2:first-child,
+.post__content h3:first-child,
+.post__content h4:first-child {
+    margin: 0 0 1em;
+}
+.post__content ol,
+.post__content ul,
+.post__content blockquote {
+    font-size: 22pt;
+    margin-left: 0;
+    list-style-type: none;
+}
+
+.post__content ul > li {
+    margin-bottom: .5em
+}
+
+.post__content ul > li::before {
+    content: '\26AC';
+    position: relative;
+    /* top: -px; */
+    color: var(--primary);
+    opacity: .5;
+    margin-left: -1.5em;
+    margin-right: .6em;
+    text-align: right;
+}
+
+.post__content p {
+    display: block;
+    font-size: 22pt;
+    line-height: 1.4;
+    text-align: justify;
+    margin-bottom: 1em;
+    max-width: 100%;
+    color: #222;
+    page-break-inside: avoid;
+    letter-spacing: .01rem;
+}
+
+.post__content p:last-child {
+    margin-bottom: 0;
+}
+
+.post__content::first-letter {
+    font-family: 'Zilla Slab', cursive;
+    color: var(--primary);
+    float: left;
+    font-size: 4.75em;
+    margin: 0 .15em 0 0;
+    line-height: .85;
+}
+
+.post__content a {
+    padding: 0 .3rem;
+    border-radius: .25rem;
+    color: rgba(97,99,163, 1);
+    background: rgba(97,99,163, .08);
+    text-decoration: none;
+}
+
+.post__content a[target=_blank]::after {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    padding-left: .75em;
+    opacity: .8;
+    font-size: .6em;
+    font-weight: 900;
+    content: "\f0ac";
+}
+
+.post__content img {
+    margin: 3rem auto;
+    max-width: 100%;
+    border-radius: 8pt;
+}
+
+.post__content blockquote {
+    border-left: 6px solid var(--primary);
+    border-top: 0;
+    border-bottom: 0;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-left: 1.5em;
+    font-style: italic;
+    color: #999;
+}
+

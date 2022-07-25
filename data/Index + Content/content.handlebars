@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Barlow:400,400i,500,500i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab:400,600,700&display=swap'" rel="stylesheet">
+</head>
+
+<style>
+
+    {#asset /style.css @encoding=utf8}
+
+    @page {
+        margin: 12rem;
+        orphans: 5;
+        widows: 3;
+    } 
+
+</style>
+
+<body>
+        
+    <!-- inicio da segunda página 'INDEX' -->
+    <div class="index" >
+        <div class="index-content" id="index">
+            <h1 class="index-content__title">Índice</h1>
+            <ol class="index-content__list">
+            {{#each info.posts}}
+            <li class="index-content__list-item">
+                <a href="#{{slug}}">{{title}}</a>
+            </li>
+            {{/each}}
+            </ol>
+        </div>
+    </div>
+    <!-- fim da primeira página 'INDEX' -->
+        
+
+    <!-- inicio da página a ser repetida -->
+    {{#each info.posts}}
+    <div style='page-break-before: always;'></div>
+
+
+    <!-- Posts -->
+    <div class="post" id="{{slug}}">
+        <h1 class="post__title">{{title}}</h1>
+        <!-- <p class="post__excerpt">{{excerpt}}</p> -->
+        <p class="post__author"><small>Por</small> {{author.name}}</p>
+        <div class="post__content">
+            {{{content}}}
+        </div>
+    </div>
+
+    <div style='page-break-after: always;'></div>
+    {{/each}}
+    <!-- fim da página a ser repetida -->
+
+</body>

@@ -1,0 +1,39 @@
+{
+    "shortid": "B1_EtEseI",
+    "name": "Index + Content",
+    "recipe": "chrome-pdf",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true,
+        "format": "a4",
+        "displayHeaderFooter": false,
+        "marginTop": "",
+        "width": "",
+        "height": "",
+        "marginRight": "",
+        "marginBottom": "",
+        "marginLeft": "",
+        "scale": 1
+    },
+    "creationDate": "2020-01-21T13:16:14.092Z",
+    "modificationDate": {
+        "$$date": 1584138374705
+    },
+    "_id": "hHeAeHLgJLYTEtX3",
+    "staticPdf": {
+        "pdfAssetShortid": ""
+    },
+    "pdfOperations": [
+        {
+            "type": "prepend",
+            "templateShortid": "HJer4YaGbU",
+            "mergeToFront": true,
+            "enabled": true
+        },
+        {
+            "type": "append",
+            "templateShortid": "SkxAJdYKHI"
+        }
+    ],
+    "$entitySet": "templates"
+}

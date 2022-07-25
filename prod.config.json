@@ -1,0 +1,41 @@
+{
+    "httpPort": 8080,
+    "allowLocalFilesAccess": true,
+    "appPath": "/",
+    "store": {
+        "provider": "fs"
+    },
+    "blobStorage": {
+        "provider": "fs"
+    },
+    "templatingEngines": {
+        "timeout": 10000000
+    },
+    "chrome": {
+        "timeout": 30000000,
+        "launchOptions": {
+            "args": [
+                "--no-sandbox"
+            ]
+        }
+    },
+    "extensions": {
+        "authentication": {
+            "cookieSession": {
+                "secret": "kT7N2t5lkbkY"
+            },
+            "admin": {
+                "username": "admin",
+                "password": "password"
+            },
+            "enabled": false
+        },
+        "sample-template": {
+            "createSamples": true
+        },
+        "scripts": {
+            "timeout": 300000
+        }
+    },
+    "tempDirectory": "./tmp"
+}
