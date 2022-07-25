@@ -1,5 +1,11 @@
 #FROM docker.io/node:fermium as builder
-FROM ubi8/nodejs-14
+FROM ubi8/s2i-core:rhel8.6
+
+# This image provides a Node.JS environment you can use to run your Node.JS
+# applications.
+
+EXPOSE 8080
+
 
 
 #ARG BUILD_ENV
