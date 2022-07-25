@@ -20,8 +20,6 @@ RUN adduser node root
 WORKDIR /app
 
 RUN chown -R node:node /app
-USER 1000
-
 
 COPY package.json package-lock.json ./
 
@@ -32,7 +30,7 @@ COPY . .
 
 RUN chown -R 1001:0 /tmp/
 
-RUN chmod -R 775 /app
+RUN chmod -R 777 /app
 
 USER 1000
 
