@@ -12,7 +12,7 @@ fix-permissions /app
 
 ARG BUILD_ENV
 
-ARG api 
+ENV api 
 
 # Possible Targets: production, staging, development
 ENV BUILD_ENV=${BUILD_ENV:-development}
@@ -38,5 +38,5 @@ COPY . .
 EXPOSE 8080
 
 #RUN echo $NPMRC_CUSTOM > ~/.npmrc
-#CMD ["sh", "-c", "pm2-runtime --json config-start.json"]
-CMD ["sh", "-c", "pm2-runtime"]
+CMD ["sh", "-c", "pm2-runtime --json config-start.json"]
+#CMD ["sh", "-c", "pm2-runtime"]
