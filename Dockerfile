@@ -1,16 +1,18 @@
 #FROM docker.io/node:fermium as builder
 FROM registry.access.redhat.com/rhscl/nodejs-8-rhel7:1-11
+EXPOSE 8080
 
 #WORKDIR /opt/app-root
 WORKDIR /app
+
 ARG NPMRC_CUSTOM
+
 USER 1001
+
 RUN bash -c "npm install pm2 -g" && \
 #bash -c "pm2 install typescript" && \
 fix-permissions /app
 #fix-permissions /opt/app-root
-
-RUN yum -y gconf-service
 
 ARG BUILD_ENV
 
@@ -36,8 +38,6 @@ COPY . .
 #RUN chmod -R 775 /app
 
 #USER 1000
-
-EXPOSE 8080
 
 #RUN echo $NPMRC_CUSTOM > ~/.npmrc
 CMD ["sh", "-c", "pm2-runtime --json config-start.json"]
