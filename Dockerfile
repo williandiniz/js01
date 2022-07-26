@@ -6,7 +6,7 @@ WORKDIR /opt/app-root
 ARG NPMRC_CUSTOM
 USER 1001
 RUN bash -c "npm install pm2 -g" && \
-bash -c "pm2 install -g" && \
+bash -c "pm2 install" && \
 fix-permissions /opt/app-root
 
 
