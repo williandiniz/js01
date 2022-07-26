@@ -2,7 +2,7 @@
 FROM registry.access.redhat.com/rhscl/nodejs-8-rhel7:1-11
 
 #WORKDIR /opt/app-root
-#WORKDIR /app
+WORKDIR /app
 ARG NPMRC_CUSTOM
 USER 1001
 RUN bash -c "npm install pm2 -g" && \
