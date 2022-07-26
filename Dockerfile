@@ -1,5 +1,13 @@
 #FROM docker.io/node:fermium as builder
-FROM dapowerplay/node-pm2-tsc:0.1.0
+FROM registry.access.redhat.com/rhscl/nodejs-8-rhel7:1-11
+
+
+ARG NPMRC_CUSTOM
+USER 1001
+RUN bash -c "npm install pm2 -g" && \
+bash -c "pm2 install typescript" && \
+fix-permissions /opt/app-root
+
 
 ARG BUILD_ENV
 
@@ -20,8 +28,8 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm install 
-RUN npm install pm2 -g
+#RUN npm install 
+#RUN npm install pm2 -g
 
 COPY . .
 
@@ -33,5 +41,5 @@ USER 1000
 
 EXPOSE 8080
 
-
-CMD ["sh", "-c", "pm2-runtime --json config-start.json"]
+RUN echo $NPMRC_CUSTOM > ~/.npmrc
+#CMD ["sh", "-c", "pm2-runtime --json config-start.json"]
