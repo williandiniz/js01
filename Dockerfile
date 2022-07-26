@@ -33,11 +33,11 @@ COPY package.json package-lock.json ./
 
 COPY . .
 
-RUN chown -R 1001:0 /tmp/
+#RUN chown -R 1001:0 /tmp/
 
-RUN chmod -R 775 /app
+#RUN chmod -R 775 /app
 
-USER 1000
+#USER 1000
 
 EXPOSE 8080
 
