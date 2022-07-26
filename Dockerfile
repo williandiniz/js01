@@ -39,4 +39,4 @@ EXPOSE 8080
 
 #RUN echo $NPMRC_CUSTOM > ~/.npmrc
 #CMD ["sh", "-c", "pm2-runtime --json config-start.json"]
-#CMD ["sh", "-c", "pm2-runtime"]
+CMD ["sh", "-c", "pm2-runtime"]
