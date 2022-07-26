@@ -1,78 +1,37 @@
-FROM ubi8/s2i-core:rhel8.6
+#FROM docker.io/node:fermium as builder
+FROM dapowerplay/node-pm2-tsc:0.1.0
 
-# This image provides a Node.JS environment you can use to run your Node.JS
-# applications.
+ARG BUILD_ENV
+
+ARG api 
+
+
+RUN echo $BUILD_ENV
+
+# Possible Targets: production, staging, development
+ENV BUILD_ENV=${BUILD_ENV:-development}
+
+
+RUN apt-get update
+RUN apt-get install libnss3-dev -y
+RUN apt-get install -y gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libgbm1
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install 
+RUN npm install pm2 -g
+
+COPY . .
+
+RUN chown -R 1001:0 /tmp/
+
+RUN chmod -R 775 /app
+
+USER 1000
 
 EXPOSE 8080
 
-# Add $HOME/node_modules/.bin to the $PATH, allowing user to make npm scripts
-# available on the CLI without using npm's --global installation mode
-# This image will be initialized with "npm run $NPM_RUN"
-# See https://docs.npmjs.com/misc/scripts, and your repo's package.json
-# file for possible values of NPM_RUN
-# Description
-# Environment:
-# * $NPM_RUN - Select an alternate / custom runtime mode, defined in your package.json files' scripts section (default: npm run "start").
-# Expose ports:
-# * 8080 - Unprivileged port used by nodejs application
 
-ENV NODEJS_VERSION=14 \
-    NPM_RUN=start \
-    NAME=nodejs \
-    NPM_CONFIG_PREFIX=$HOME/.npm-global \
-    PATH=$HOME/node_modules/.bin/:$HOME/.npm-global/bin/:$PATH \
-    CNB_STACK_ID=com.redhat.stacks.ubi8-nodejs-14 \
-    CNB_USER_ID=1001 \
-    CNB_GROUP_ID=0
-
-ENV SUMMARY="Platform for building and running Node.js $NODEJS_VERSION applications" \
-    DESCRIPTION="Node.js $NODEJS_VERSION available as container is a base platform for \
-building and running various Node.js $NODEJS_VERSION applications and frameworks. \
-Node.js is a platform built on Chrome's JavaScript runtime for easily building \
-fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model \
-that makes it lightweight and efficient, perfect for data-intensive real-time applications \
-that run across distributed devices."
-
-LABEL summary="$SUMMARY" \
-      description="$DESCRIPTION" \
-      io.k8s.description="$DESCRIPTION" \
-      io.k8s.display-name="Node.js $NODEJS_VERSION" \
-      io.openshift.expose-services="8080:http" \
-      io.openshift.tags="builder,$NAME,${NAME}${NODEJS_VERSION}" \
-      io.openshift.s2i.scripts-url="image:///usr/libexec/s2i" \
-      io.s2i.scripts-url="image:///usr/libexec/s2i" \
-      io.buildpacks.stack.id="com.redhat.stacks.ubi8-nodejs-14" \
-      com.redhat.dev-mode="DEV_MODE:false" \
-      com.redhat.deployments-dir="${APP_ROOT}/src" \
-      com.redhat.dev-mode.port="DEBUG_PORT:5858" \
-      com.redhat.component="${NAME}-${NODEJS_VERSION}-container" \
-      name="ubi8/$NAME-$NODEJS_VERSION" \
-      version="1" \
-      com.redhat.license_terms="https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI" \
-      maintainer="SoftwareCollections.org <sclorg@redhat.com>" \
-      help="For more information visit https://github.com/sclorg/s2i-nodejs-container" \
-      usage="s2i build <SOURCE-REPOSITORY> ubi8/$NAME-$NODEJS_VERSION:latest <APP-NAME>"
-
-RUN yum -y module enable nodejs:$NODEJS_VERSION && \
-    MODULE_DEPS="make gcc gcc-c++ libatomic_ops git openssl-devel" && \
-    INSTALL_PKGS="$MODULE_DEPS nodejs npm nodejs-nodemon nss_wrapper" && \
-    ln -s /usr/lib/node_modules/nodemon/bin/nodemon.js /usr/bin/nodemon && \
-    ln -s /usr/libexec/platform-python /usr/bin/python3 && \
-    yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
-    rpm -V $INSTALL_PKGS && \
-    yum -y clean all --enablerepo='*'
-
-# Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH
-COPY ./s2i/bin/ $STI_SCRIPTS_PATH
-
-# Copy extra files to the image.
-COPY ./root/ /
-
-# Drop the root user and make the content of /opt/app-root owned by user 1001
-RUN chown -R 1001:0 ${APP_ROOT} && chmod -R ug+rwx ${APP_ROOT} && \
-    rpm-file-permissions
-
-USER 1001
-
-# Set the default CMD to print the usage of the language image
-CMD $STI_SCRIPTS_PATH/usage
+CMD ["sh", "-c", "pm2-runtime --json config-start.json"]
