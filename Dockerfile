@@ -6,7 +6,7 @@ WORKDIR /opt/app-root
 ARG NPMRC_CUSTOM
 USER 1001
 RUN bash -c "npm install pm2 -g" && \
-bash -c "pm2 install" && \
+#bash -c "pm2 install typescript" && \
 fix-permissions /opt/app-root
 
 
