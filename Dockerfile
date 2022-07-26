@@ -12,7 +12,7 @@ fix-permissions /app
 
 ARG BUILD_ENV
 
-ENV api 
+ARG api 
 
 # Possible Targets: production, staging, development
 ENV BUILD_ENV=${BUILD_ENV:-development}
